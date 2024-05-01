@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block title %}Pedidos en Proceso{% endblock %}
+
+{% block body %}
+<h1>Pedidos en Proceso</h1>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Pedido</th>
+        <th>Nombre de la Comida</th>
+        <th>Costo de la Comida</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pedido in pedidos %}
+      <tr>
+        <td>{{ pedido.id_pedido }}</td>
+        <td>{{ pedido.nombre_comida }}</td>
+        <td>{{ pedido.costo_comida }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Detalles de Comida</h2>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Comida</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterar sobre los datos de la tabla comida -->
+      {% for comida in detalles_comida %}
+      <tr>
+        <td>{{ comida.id_comida }}</td>
+        <td>{{ comida.nombre }}</td>
+        <td>{{ comida.precio }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Detalles de Pedido</h2>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Detalle de Pedido</th>
+        <th>ID Comida</th>
+        <th>ID Pedido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterar sobre los datos de la tabla detalles_de_pedido -->
+      {% for detalle_pedido in detalles_pedido %}
+      <tr>
+        <td>{{ detalle_pedido.id_detalle_pedido }}</td>
+        <td>{{ detalle_pedido.id_comida }}</td>
+        <td>{{ detalle_pedido.id_pedido }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Estado de Pedidos</h2>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Pedido</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterar sobre los datos de la tabla pedido -->
+      {% for estado_pedido in estados_pedido %}
+      <tr>
+        <td>{{ estado_pedido.id_pedido }}</td>
+        <td>{{ estado_pedido.estado }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
